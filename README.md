@@ -2,8 +2,6 @@
 
 > A cloud sharing dashcam video platform
 
-<br>
-
 ### Taglines
 
 - Share the road, share your journey.

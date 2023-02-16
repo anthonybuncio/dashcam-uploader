@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 
 export default function Contact() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
 
@@ -14,6 +14,16 @@ export default function Contact() {
     };
 
     console.log(data);
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    if (res.ok) {
+      alert("Your response has been received!");
+    } else {
+      alert("There was an error. Please try again in a while.");
+    }
   };
 
   return (
