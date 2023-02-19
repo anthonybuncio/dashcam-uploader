@@ -8,7 +8,7 @@ export default function Videos({ videos }) {
   const itemsWithCoords = [];
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.GOOGLE_API_KEY,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
   });
 
   if (loadError) {

@@ -42,6 +42,7 @@ export default function Login() {
       console.error(e);
     }
   };
+  console.log(router);
   return (
     <>
       <section className="bg-gray-100">
