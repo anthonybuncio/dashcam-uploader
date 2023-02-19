@@ -1,22 +1,10 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Request() {
-  const { data: session } = useSession();
-  if (session) {
-    return (
-      <>
-        <div className="flex m-30">
-          Signed in as {session.user.email} <br />
-          <button onClick={() => signOut()}>Sign out</button>
-        </div>
-      </>
-    );
-  }
   return (
     <>
-      <div className="mt-30">
-        Not signed in <br />
-        <button onClick={() => signIn()}>Sign in</button>
+      <div className="mt-16 py-12 bg-gray-100 min-h-screen">
+        <h1>request form</h1>
       </div>
     </>
   );

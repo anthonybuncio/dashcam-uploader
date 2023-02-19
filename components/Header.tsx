@@ -1,8 +1,7 @@
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Header = ({}) => {
   const { data: session } = useSession();
@@ -38,7 +37,26 @@ const Header = ({}) => {
         </Link>
         <div className="mt-2 sm:mt-0 sm:flex md:order-2">
           {/* <!-- Login Button --> */}
-          {session ? <HeaderUser user={session.user} /> : <HeaderAuth />}
+          {session ? (
+            <HeaderUser user={session.user} />
+          ) : (
+            <>
+              <button
+                type="button"
+                className="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none md:inline-block rounded-lg"
+                onClick={() => signIn()}
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                className="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none md:mr-0 md:inline-block rounded-lg"
+                onClick={() => signIn()}
+              >
+                Register
+              </button>
+            </>
+          )}
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
@@ -116,7 +134,6 @@ const Header = ({}) => {
 
 const HeaderUser = ({ user }) => {
   const [userMenu, setUserMenu] = useState(false);
-  const router = useRouter();
   return (
     <>
       <div
@@ -220,29 +237,6 @@ const HeaderUser = ({ user }) => {
           )}
         </div>
       </div>
-    </>
-  );
-};
-
-const HeaderAuth = () => {
-  return (
-    <>
-      <Link href="/login">
-        <button
-          type="button"
-          className="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none md:inline-block rounded-lg"
-        >
-          Login
-        </button>
-      </Link>
-      <Link href="/register">
-        <button
-          type="button"
-          className="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none md:mr-0 md:inline-block rounded-lg"
-        >
-          Register
-        </button>
-      </Link>
     </>
   );
 };

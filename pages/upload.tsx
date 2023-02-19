@@ -1,5 +1,4 @@
-import Header from "@/components/Header";
-import Link from "next/link";
+import Image from "next/image";
 
 export default function Upload() {
   const handleSubmit = async (event) => {
@@ -259,9 +258,18 @@ export default function Upload() {
           </div>
         </div>
         <div className="w-1/2 shadow-2xl">
+          {/* <div className="hidden object-cover w-full h-screen md:block opacity-75">
+            <Image
+              src="https://images.unsplash.com/photo-1597328290883-50c5787b7c7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+              alt="profile"
+              height={100}
+              width={100}
+            />
+          </div> */}
           <img
             className="hidden object-cover w-full h-screen md:block opacity-75"
             src="https://images.unsplash.com/photo-1597328290883-50c5787b7c7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+            alt="profile"
           />
         </div>
       </div>

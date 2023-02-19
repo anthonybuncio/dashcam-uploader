@@ -1,10 +1,8 @@
-import Footer from "@/components/Footer";
 import Map from "@/components/Map";
 import { useLoadScript } from "@react-google-maps/api";
 import clientPromise from "@/lib/mongo";
 import Link from "next/link";
-import { useEffect } from "react";
-import Header from "@/components/Header";
+import Image from "next/image";
 
 export default function Videos({ videos }) {
   const itemsWithCoords = [];
@@ -37,11 +35,15 @@ export default function Videos({ videos }) {
           <div className="shadow border select-none cursor-pointer bg-white rounded-md flex flex-1 items-center p-4">
             <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
               <div className="relative block">
-                <img
-                  alt="profil"
-                  src="https://icons.veryicon.com/png/o/education-technology/road-supervision-construction-platform-icon/traffic-accident.png"
-                  className="mx-auto object-cover rounded-full h-10 w-10 "
-                />
+                <div className="mx-auto object-cover h-10 w-10 ">
+                  <Image
+                    alt="type"
+                    src="https://icons.veryicon.com/png/o/education-technology/road-supervision-construction-platform-icon/traffic-accident.png"
+                    width={100}
+                    height={100}
+                    className="rounded-full"
+                  />
+                </div>
               </div>
             </div>
             <div className="flex-1 pl-1 md:mr-16">
