@@ -1,9 +1,34 @@
 import Link from "next/link";
-import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
+import { useLocalStorage } from "@/lib/hooks/useLocalStorage";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Login() {
   const router = useRouter();
+  const [user, setUser] = useLocalStorage<{}>("sl_user", "");
+  const { data: session } = useSession();
+
+  console.log(session);
+  const login = () => {
+    if (session) {
+      return (
+        <>
+          <div className="flex m-30">
+            Signed in as {session.user.email} <br />
+            <button onClick={() => signOut()}>Sign out</button>
+          </div>
+        </>
+      );
+    }
+    return (
+      <>
+        <div className="mt-30">
+          Not signed in <br />
+          <button onClick={() => signIn()}>Sign in</button>
+        </div>
+      </>
+    );
+  };
 
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
@@ -18,32 +43,39 @@ export default function Login() {
     console.log(data);
 
     try {
-      let response = await fetch("http://localhost:3000/api/login");
-      let userData = await response.json();
-      let user = JSON.parse(JSON.stringify(userData));
+      if (
+        data.email === "anthonyb.ft@gmail.com" &&
+        data.password === "password"
+      ) {
+        console.log("Success!!");
+        setUser({
+          user_id: "63dacca8c203d42d292dc83b",
+          first_name: "Anthony",
+          last_name: "B",
+          email: "anthonyb.ft@gmail.com",
+        });
+        return router.push("/videos");
+      } else console.log("Incorrect..");
 
-      console.log(userData);
+      // let response = await fetch("http://localhost:3000/api/login");
+      // let userData = await response.json();
+      // let userProfile = JSON.parse(JSON.stringify(userData));
+
+      // console.log(userData);
       // return {
-      //   user: JSON.parse(JSON.stringify(userData)),
+      //   userProfile
       // };
     } catch (e) {
       console.error(e);
     }
-
-    // if (
-    //   data.email === "anthonyb.ft@gmail.com" &&
-    //   data.password === "password"
-    // ) {
-    //   console.log("Success!!");
-    //   router.push("/videos");
-    // } else console.log("Incorrect..");
   };
   return (
     <>
-      <section className="py-20 bg-gray-100">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-gray-100">
+        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
           <div className="mx-auto max-w-lg">
             <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+              {login()}
               <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
                 Login To Your Account
               </div>
@@ -94,12 +126,12 @@ export default function Login() {
                     </div>
                   </div>
                   <div className="flex items-center mb-6 -mt-4">
-                    <div className="flex ml-auto">
+                    <div className="flex m-auto">
                       <a
                         href="#"
-                        className="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
+                        className="inline-flex text-xs font-md text-gray-500  dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
                       >
-                        Forgot Your Password?
+                        Forgot your password?
                       </a>
                     </div>
                   </div>
@@ -116,16 +148,15 @@ export default function Login() {
               <div className="flex items-center justify-center mt-6">
                 <Link
                   href="/register"
-                  className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
+                  className="inline-flex items-center text-xs font-md text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
                 >
-                  <span>You don&#x27;t have an account?</span>
+                  <span>Don&#x27;t have an account?</span>
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

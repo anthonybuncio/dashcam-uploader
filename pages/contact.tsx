@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="py-12 bg-gray-100 min-h-screen">
+    <div className="py-12 mt-16 bg-gray-100 min-h-screen">
       <div className="">
         <p className="text-3xl text-center font-bold">Contact Us</p>
       </div>
@@ -44,13 +44,12 @@ export default function Contact() {
                 your questions.
               </p>
 
-              <div className="mt-8 text-xl ">
+              <div className="mt-8 text-md">
                 <address className="mt-2 not-italic">
                   282 Lake Brook Dr. <br />
-                  Houston, TX <br />
-                  77096
+                  Houston, TX 77096
                 </address>
-                <a href="" className="text-xl text-blue-600">
+                <a href="" className="text-blue-600">
                   713-444-4444
                 </a>
               </div>
@@ -140,7 +139,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

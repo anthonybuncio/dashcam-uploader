@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Link from "next/link";
 
 export default function Upload() {
@@ -60,65 +61,75 @@ export default function Upload() {
               className="flex flex-col pt-3 md:pt-8"
               onSubmit={handleSubmit}
             >
-              <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                  <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15"
-                      height="15"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-                      <path d="M16 3l0 4"></path>
-                      <path d="M8 3l0 4"></path>
-                      <path d="M4 11l16 0"></path>
-                      <path d="M11 15l1 0"></path>
-                      <path d="M12 15l0 3"></path>
-                    </svg>
-                  </span>
-                  <input
-                    type="date"
-                    id="design-login-email"
-                    className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    name="date"
-                    placeholder="Date"
-                  />
+              <div className="flex justify-between">
+                <div className="flex pt-4 pr-4 w-1/2">
+                  <div className="flex relative grow">
+                    <span className=" inline-flex items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2"
+                        stroke="currentColor"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path
+                          stroke="none"
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        ></path>
+                        <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                        <path d="M16 3l0 4"></path>
+                        <path d="M8 3l0 4"></path>
+                        <path d="M4 11l16 0"></path>
+                        <path d="M11 15l1 0"></path>
+                        <path d="M12 15l0 3"></path>
+                      </svg>
+                    </span>
+                    <input
+                      type="date"
+                      id="design-login-email"
+                      className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      name="date"
+                      placeholder="Date"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                  <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="icon icon-tabler icon-tabler-clock"
-                      width="15"
-                      height="15"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                      <path d="M12 7l0 5l3 3"></path>
-                    </svg>
-                  </span>
-                  <input
-                    type="time"
-                    id="design-login-password"
-                    className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    name="time"
-                    placeholder="Time"
-                  />
+                <div className="flex pt-4 pl-4 w-1/2">
+                  <div className="flex relative grow">
+                    <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="icon icon-tabler icon-tabler-clock"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          stroke="none"
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        ></path>
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                        <path d="M12 7l0 5l3 3"></path>
+                      </svg>
+                    </span>
+                    <input
+                      type="time"
+                      id="design-login-password"
+                      className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      name="time"
+                      placeholder="Time"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col pt-4 ">

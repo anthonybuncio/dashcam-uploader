@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import Link from "next/link";
 
 export default function Register() {
@@ -65,8 +66,8 @@ export default function Register() {
 
   return (
     <>
-      <section className=" py-20 bg-gray-100">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-gray-100">
+        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
           <div className="mx-auto max-w-lg">
             <div className="flex flex-col max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
               <div className="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
@@ -149,7 +150,6 @@ export default function Register() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

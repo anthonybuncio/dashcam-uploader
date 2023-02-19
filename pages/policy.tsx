@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 
 export default function Policy() {
   return (
-    <div className="py-12 bg-gray-100">
+    <div className="py-12 mt-16 bg-gray-100">
       <div className="">
         <p className="text-3xl text-center font-bold">Privacy Policy</p>
       </div>
@@ -122,7 +122,6 @@ export default function Policy() {
         If you have any questions about these Terms or our platform, please
         contact us at [contact email].
       </section>
-      <Footer />
     </div>
   );
 }

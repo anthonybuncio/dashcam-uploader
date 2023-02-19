@@ -2,19 +2,18 @@ import Footer from "@/components/Footer";
 
 export default function TOS() {
   return (
-    <div className="py-12 bg-gray-100">
+    <div className="py-12 mt-16 bg-gray-100">
       <div className="">
         <p className="text-3xl text-center font-bold">Terms of Service</p>
       </div>
       <section className="py-10 w-1/2 m-auto">
-        <p className="text-center font-semibold">
+        <p className="font-semibold">
           Welcome to our cloud sharing dashcam video platform! These terms of
           service (&quot;Terms&quot;) govern your access to and use of our
           platform, as well as any content, features, or services offered on our
           platform. By accessing or using our platform, you agree to be bound by
-          these Terms.
+          these Terms:
         </p>
-        <br />
         <br />
         <span className="font-semibold underline">
           I. Your Use of the Platform
@@ -106,7 +105,6 @@ export default function TOS() {
         If you have any questions about these Terms or our platform, please
         contact us at [contact email].
       </section>
-      <Footer />
     </div>
   );
 }

@@ -10,9 +10,8 @@ export default async (req, res) => {
     return res.status(405).json({ msg: 'Only POST requests are allowed' });
   }
   try {
-    console.log('REQUEST BODY', JSON.parse(req.body))
     const { name, email, phone, message } = JSON.parse(req.body);
-    console.log('DATA', name, email, phone, message)
+
     await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_DATABASE_ID,
