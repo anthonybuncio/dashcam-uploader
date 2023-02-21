@@ -9,8 +9,7 @@ import { SessionProvider } from "next-auth/react";
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   const router = useRouter();
 
-  console.log(`_APP ROUTER LOAD FOR ${router.pathname}`, router);
-  console.log(`_APP PAGE PROPS`, pageProps);
+  console.log(`"${router.pathname}" PROPS`, pageProps);
   return (
     <>
       <Head>

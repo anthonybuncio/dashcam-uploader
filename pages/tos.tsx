@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-
 export default function TOS() {
   return (
     <div className="py-12 mt-16 bg-gray-100">

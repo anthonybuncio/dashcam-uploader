@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-
 export default function Contact() {
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.

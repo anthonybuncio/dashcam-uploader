@@ -1,8 +1,7 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Link from "next/link";
 
 export default function Home() {
+  console.log(process.env.NEXT_PUBLIC_GTM_ANALYTICS);
   return (
     <>
       <section className="bg-gray-900 text-white">

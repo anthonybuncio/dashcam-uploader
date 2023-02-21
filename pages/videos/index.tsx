@@ -3,9 +3,15 @@ import { useLoadScript } from "@react-google-maps/api";
 import clientPromise from "@/lib/mongo";
 import Link from "next/link";
 import Image from "next/image";
+import SubmissionList from "@/components/SubmissionList";
+import Modal from "@/components/Modal";
+import { useState } from "react";
+import VideoModal from "@/components/VideoModal";
 
 export default function Videos({ videos }) {
   const itemsWithCoords = [];
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({});
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -15,60 +21,63 @@ export default function Videos({ videos }) {
     return <div>Map cannot be loaded right now, sorry.</div>;
   }
 
-  const submissionItems = (itemData) => {
-    if (itemData.coords.lat && itemData.coords.long) {
-      itemsWithCoords.push({
-        lat: itemData.coords.lat,
-        long: itemData.coords.long,
-      });
-    }
-    const dateStr = new Date(itemData.date * 1000).toLocaleString();
-    const uploadStr = new Date(
-      itemData.submitted_at * 1000
-    ).toLocaleDateString();
-    return (
-      <li key={itemData._id}>
-        <Link
-          href={itemData.video_url}
-          className="flex flex-row mb-2 border-gray-400"
-        >
-          <div className="shadow border select-none cursor-pointer bg-white rounded-md flex flex-1 items-center p-4">
-            <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-              <div className="relative block">
-                <div className="mx-auto object-cover h-10 w-10 ">
-                  <Image
-                    alt="type"
-                    src="https://icons.veryicon.com/png/o/education-technology/road-supervision-construction-platform-icon/traffic-accident.png"
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 pl-1 md:mr-16">
-              <div className="font-medium">
-                {itemData.streets[0]} & {itemData.streets[1]}
-              </div>
-              <div className="text-xs font-medium text-gray-800">
-                Date: {dateStr}
-              </div>
-            </div>
-            <div className="text-xs text-gray-600 text-end">
-              <span>{itemData.vehicles[0]}</span>
-              <br />
-              <span>{itemData.vehicles[1]}</span>
-              <br />
-            </div>
-          </div>
-        </Link>
-      </li>
-    );
-  };
+  // const submissionItems = (itemData) => {
+  //   if (itemData.coords.lat && itemData.coords.long) {
+  //     itemsWithCoords.push({
+  //       lat: itemData.coords.lat,
+  //       long: itemData.coords.long,
+  //     });
+  //   }
+  //   const dateStr = new Date(itemData.date * 1000).toLocaleString();
+  //   const uploadStr = new Date(
+  //     itemData.submitted_at * 1000
+  //   ).toLocaleDateString();
+  //   return (
+  //     <li key={itemData._id}>
+  //       <Link
+  //         href={itemData.video_url}
+  //         className="flex flex-row mb-2 border-gray-400"
+  //       >
+  //         <div className="shadow border select-none cursor-pointer bg-white rounded-md flex flex-1 items-center p-4">
+  //           <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
+  //             <div className="relative block">
+  //               <div className="mx-auto object-cover h-10 w-10 ">
+  //                 <Image
+  //                   alt="type"
+  //                   src="https://icons.veryicon.com/png/o/education-technology/road-supervision-construction-platform-icon/traffic-accident.png"
+  //                   width={100}
+  //                   height={100}
+  //                   className="rounded-full"
+  //                 />
+  //               </div>
+  //             </div>
+  //           </div>
+  //           <div className="flex-1 pl-1 md:mr-16">
+  //             <div className="font-medium">
+  //               {itemData.streets[0]} & {itemData.streets[1]}
+  //             </div>
+  //             <div className="text-xs font-medium text-gray-800">
+  //               Date: {dateStr}
+  //             </div>
+  //           </div>
+  //           <div className="text-xs text-gray-600 text-end">
+  //             <span>{itemData.vehicles[0]}</span>
+  //             <br />
+  //             <span>{itemData.vehicles[1]}</span>
+  //             <br />
+  //           </div>
+  //         </div>
+  //       </Link>
+  //     </li>
+  //   );
+  // };
 
   return (
     <>
       <div className="flex flex-wrap items-center overflow-x-auto overflow-y-hidden py-5 mt-16 justify-center bg-white text-gray-800">
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          <VideoModal data={selectedItem} />
+        </Modal>
         <div className="flex">
           {isLoaded ? (
             <Map coordsList={itemsWithCoords} />
@@ -87,8 +96,7 @@ export default function Videos({ videos }) {
                     <div className="block sm:hidden">
                       <button className="flex items-center gap-2 pb-1 text-gray-900 transition border-b border-gray-400 cursor-pointer hover:border-gray-600">
                         <span className="text-sm font-medium">
-                          {" "}
-                          Filters & Sorting{" "}
+                          Filters & Sorting
                         </span>
 
                         <svg
@@ -159,7 +167,17 @@ export default function Videos({ videos }) {
                 </div>
               </li>
               {videos.map((item) => {
-                return submissionItems(item);
+                return (
+                  <div
+                    onClick={() => {
+                      setSelectedItem(item);
+                      setIsOpen(true);
+                    }}
+                    key={item._id}
+                  >
+                    <SubmissionList itemData={item} />
+                  </div>
+                );
               })}
             </ul>
           </div>
