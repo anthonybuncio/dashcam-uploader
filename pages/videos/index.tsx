@@ -1,8 +1,6 @@
 import Map from "@/components/Map";
 import { useLoadScript } from "@react-google-maps/api";
 import clientPromise from "@/lib/mongo";
-import Link from "next/link";
-import Image from "next/image";
 import SubmissionList from "@/components/SubmissionList";
 import Modal from "@/components/Modal";
 import { useState } from "react";
